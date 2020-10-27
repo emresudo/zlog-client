@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+}
+
+*:focus {
+  outline: 0 !important;
+}
+
+::selection {
+  background-color: #03a9f4;
+  color: #000;
+}
+
+body {
+  background-color: #f4f4f4;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased;
+  overflow-y: overlay;
+}
