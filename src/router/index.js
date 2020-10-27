@@ -13,23 +13,33 @@ const routes = [
   {
     path: "/login",
     name: "Login",
-    component: Login
+    component: Login,
+    meta: { loggedInProtection: true }
   },
   {
     path: "/register",
     name: "Register",
-    component: Register
-  },
-  {
-    path: "/tag/:tag",
-    name: "tags",
-    component: Register
+    component: Register,
+    meta: { loggedInProtection: true }
   }
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+});
+
+router.beforeEach((to, _, next) => {
+  if (to.matched.some(record => record.meta.loggedInProtection)) {
+    const isAuthenticated = !!localStorage.getItem("token");
+    if (isAuthenticated) {
+      next({ path: "/" });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;
