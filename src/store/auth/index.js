@@ -5,7 +5,7 @@ const tokenDecoding = token => {
   }
 };
 
-const authStore = {
+const auth = {
   namespaced: true,
   state: {
     token: localStorage.getItem("token"),
@@ -34,4 +34,4 @@ const authStore = {
   }
 };
 
-export default authStore;
+export default auth;
