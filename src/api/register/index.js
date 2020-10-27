@@ -17,7 +17,7 @@ const Register = async ({
   return await axios
     .post("/register", data)
     .then(response => {
-      return { type: "success", msg: response.data.response.message };
+      return { type: "success", msg: response.data.message };
     })
     .catch(error => {
       return { type: "error", msg: error.response.data.message };
