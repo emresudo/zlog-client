@@ -52,16 +52,15 @@ export default {
           class="flex items-center text-sm rounded-full transition duration-150"
           @click="dropdownToggle"
         >
-          <span class="text-gray-700 mr-3">{{ getUser.fullname }}</span>
           <img
             class="h-8 w-8 rounded-full"
-            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+            :src="getUser.profilePhoto"
             alt="Profil fotoğrafı"
           />
         </button>
         <div v-show="isMenu" @click="dropdownToggle()" class="dropdown">
           <div class="py-1 rounded-md bg-white shadow-xs z-10 relative">
-            <router-link :to="'/login'" class="dropdown-item"
+            <router-link :to="'/profile'" class="dropdown-item"
               >Profilim</router-link
             >
             <button @click="logout()" class="dropdown-item">Çıkış yap</button>
