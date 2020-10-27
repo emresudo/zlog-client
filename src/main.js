@@ -3,13 +3,13 @@ import App from "./App.vue";
 import "./registerServiceWorker";
 import router from "./router";
 import store from "./store";
-import toast, { POSITION } from "vue-toastification";
+import toast from "vue-toastification";
 
 import "./assets/tailwind.css";
 import "vue-toastification/dist/index.css";
 
 const toastConfig = {
-  position: POSITION.TOP_RIGHT,
+  position: "top-right",
   timeout: 4000
 };
 
