@@ -1,6 +1,12 @@
 <script>
-import { mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
+import { useToast } from "vue-toastification";
 export default {
+  setup() {
+    const toast = useToast();
+
+    return { toast };
+  },
   data() {
     return {
       isMenu: false,
@@ -10,6 +16,8 @@ export default {
     ...mapGetters("auth", ["getUser"]),
   },
   methods: {
+    ...mapActions("auth", ["logout"]),
+    // TODO Add logout notification
     dropdownToggle() {
       this.isMenu = !this.isMenu;
     },
@@ -56,7 +64,7 @@ export default {
             <router-link :to="'/login'" class="dropdown-item"
               >Profilim</router-link
             >
-            <button class="dropdown-item">Çıkış yap</button>
+            <button @click="logout()" class="dropdown-item">Çıkış yap</button>
           </div>
         </div>
       </div>
