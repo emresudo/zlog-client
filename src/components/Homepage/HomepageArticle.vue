@@ -87,7 +87,7 @@ export default {
 
 <style lang="postcss" scoped>
 .article-card {
-  @apply max-w-screen-xl rounded-sm overflow-hidden shadow-md border border-gray-100 mb-5 p-6;
+  @apply max-w-screen-xl rounded-sm overflow-hidden shadow border border-gray-100 mb-5 p-6;
 }
 .tag {
   @apply inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2;
