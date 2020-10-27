@@ -14,6 +14,7 @@ if (token) {
   });
 }
 
+// TODO Back-end service down control
 axiosInstance.interceptors.response.use(
   function(response) {
     return response;
