@@ -39,20 +39,15 @@ const router = createRouter({
 router.beforeEach((to, _, next) => {
   const isAuthenticated = !!localStorage.getItem("token");
   if (to.matched.some(record => record.meta.onlyGuest)) {
-    if (isAuthenticated) {
-      next({ path: "/" });
-    } else {
-      next();
-    }
+    // If logged in, redirect to home page
+    // to avoid re-login / registration.
+    if (isAuthenticated) next({ path: "/" });
+    else next();
   } else if (to.matched.some(record => record.meta.loginRequired)) {
-    if (!isAuthenticated) {
-      next({ path: "/login" });
-    } else {
-      next();
-    }
-  } else {
-    next();
-  }
+    // If not logged in, redirect to login
+    if (!isAuthenticated) next({ path: "/login" });
+    else next();
+  } else next();
 });
 
 export default router;
