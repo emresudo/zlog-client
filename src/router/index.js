@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Homepage from "../views/Homepage/Homepage";
 import Login from "../views/Login/Login";
 import Register from "../views/Register/Register";
+import NewArticle from "../views/NewArticle/NewArticle";
 
 const routes = [
   {
@@ -14,13 +15,19 @@ const routes = [
     path: "/login",
     name: "Login",
     component: Login,
-    meta: { loggedInProtection: true }
+    meta: { onlyGuest: true }
   },
   {
     path: "/register",
     name: "Register",
     component: Register,
-    meta: { loggedInProtection: true }
+    meta: { onlyGuest: true }
+  },
+  {
+    path: "/new-article",
+    name: "NewArticle",
+    component: NewArticle,
+    meta: { loginRequired: true }
   }
 ];
 
@@ -30,10 +37,16 @@ const router = createRouter({
 });
 
 router.beforeEach((to, _, next) => {
-  if (to.matched.some(record => record.meta.loggedInProtection)) {
-    const isAuthenticated = !!localStorage.getItem("token");
+  const isAuthenticated = !!localStorage.getItem("token");
+  if (to.matched.some(record => record.meta.onlyGuest)) {
     if (isAuthenticated) {
       next({ path: "/" });
+    } else {
+      next();
+    }
+  } else if (to.matched.some(record => record.meta.loginRequired)) {
+    if (!isAuthenticated) {
+      next({ path: "/login" });
     } else {
       next();
     }
