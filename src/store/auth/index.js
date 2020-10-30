@@ -1,3 +1,5 @@
+import router from "../../router";
+
 const tokenDecoding = token => {
   if (typeof token == "string") {
     const tokenDecode = Buffer.from(token.split(".")[1], "base64").toString();
@@ -25,6 +27,7 @@ const auth = {
     logout({ commit }) {
       commit("clearToken");
       localStorage.removeItem("token");
+      router.push("/");
     },
     setToken({ state }, payload) {
       localStorage.setItem("token", payload);
