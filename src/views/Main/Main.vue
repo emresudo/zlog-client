@@ -1,11 +1,9 @@
 <script>
 export default {
-  name: 'Main',
+  name: "Main",
 };
 </script>
 
 <template>
-  <div class="container mx-auto">
-    <router-view></router-view>
-  </div>
+  <router-view></router-view>
 </template>
