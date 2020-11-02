@@ -55,8 +55,4 @@ export default {
   </div>
 </template>
 
-<style lang="postcss" scoped>
-.homepage {
-  @apply pt-2;
-}
-</style>
+<style lang="postcss" scoped></style>
