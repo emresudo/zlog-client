@@ -21,7 +21,7 @@ export default {
 
 <template>
   <div class="bg-white border-solid border-b-2 justify-center flex">
-    <div class="navbar container max-w-screen-lg px-4">
+    <div class="navbar container max-w-screen-lg">
       <router-link to="/">
         <h1 class="text-2xl font-medium">Zlog</h1>
       </router-link>
